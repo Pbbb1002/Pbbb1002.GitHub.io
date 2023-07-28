@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-bounce.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="​                                           基于Python的数据可视化相关开发JSON数据格式JSON是一种轻量级的数据交互格式。可以按照JSON指定的格式去组织和封装数据。其本质是一个带有特定格式的字符串 主要功能：JSON就是一个在各个编程语言中流通的数据格式，负责不同编程语言中的数据传递和交互 JSON格式数据转化1234# JSON的数据格式可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 05">
+<meta property="og:url" content="http://example.com/2023/07/29/Python-05/index.html">
+<meta property="og:site_name" content="Pbbb&#39;s Blog">
+<meta property="og:description" content="​                                           基于Python的数据可视化相关开发JSON数据格式JSON是一种轻量级的数据交互格式。可以按照JSON指定的格式去组织和封装数据。其本质是一个带有特定格式的字符串 主要功能：JSON就是一个在各个编程语言中流通的数据格式，负责不同编程语言中的数据传递和交互 JSON格式数据转化1234# JSON的数据格式可">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-28T18:05:05.436Z">
+<meta property="article:author" content="彭 斌">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/07/29/Python-05/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/07/29/Python-05/","path":"2023/07/29/Python-05/","title":"Python 05"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python 05 | Pbbb's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Pbbb's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9B%B8%E5%85%B3%E5%BC%80%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">基于Python的数据可视化相关开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">JSON数据格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8C%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">JSON格式数据转化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python%E6%95%B0%E6%8D%AE%E5%92%8CJSON%E6%95%B0%E6%8D%AE%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96"><span class="nav-number">1.1.2.</span> <span class="nav-text">Python数据和JSON数据的相互转化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyecharts%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.</span> <span class="nav-text">pyecharts模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pyecharts%E7%9A%84%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">pyecharts的基础入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%9B%BE%E5%BD%A2%E7%9A%84%E7%94%9F%E6%88%90"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">基础图形的生成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E9%80%89%E9%A1%B9"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">全局配置选项</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="彭 斌"
+      src="/images/sunflower.jpg">
+  <p class="site-author-name" itemprop="name">彭 斌</p>
+  <div class="site-description" itemprop="description">难怪我永远怀念飞灰</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/29/Python-05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sunflower.jpg">
+      <meta itemprop="name" content="彭 斌">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pbbb's Blog">
+      <meta itemprop="description" content="难怪我永远怀念飞灰">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python 05 | Pbbb's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python 05
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-07-29 00:00:00 / 修改时间：02:05:05" itemprop="dateCreated datePublished" datetime="2023-07-29T00:00:00+08:00">2023-07-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>515</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>​                                          <!-- 展开全文 --></p>
+<h1 id="基于Python的数据可视化相关开发"><a href="#基于Python的数据可视化相关开发" class="headerlink" title="基于Python的数据可视化相关开发"></a>基于Python的数据可视化相关开发</h1><h2 id="JSON数据格式"><a href="#JSON数据格式" class="headerlink" title="JSON数据格式"></a>JSON数据格式</h2><p>JSON是一种轻量级的数据交互格式。可以按照JSON指定的格式去组织和封装数据。其本质是一个<strong>带有特定格式的字符串</strong></p>
+<p>主要功能：JSON就是一个在各个编程语言中流通的数据格式，<strong>负责不同编程语言中的数据传递和交互</strong></p>
+<h3 id="JSON格式数据转化"><a href="#JSON格式数据转化" class="headerlink" title="JSON格式数据转化"></a>JSON格式数据转化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># JSON的数据格式可以是：</span></span><br><span class="line">&#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;admin&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">18</span>&#125; </span><br><span class="line"><span class="comment"># 也可以是：</span></span><br><span class="line">[&#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;admin&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">18</span>&#125;, &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">19</span>&#125;] </span><br></pre></td></tr></table></figure>
+
+<p>JSON是字典或内部嵌套字典的列表，所以JSON可以直接和Python的字典或者列表无缝切换</p>
+<h3 id="Python数据和JSON数据的相互转化"><a href="#Python数据和JSON数据的相互转化" class="headerlink" title="Python数据和JSON数据的相互转化"></a>Python数据和JSON数据的相互转化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入json模块</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="comment"># 准备符合json格式要求的python数据</span></span><br><span class="line">data = [&#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;admin&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">18</span>&#125;, &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">19</span>&#125;]</span><br><span class="line"><span class="comment"># 通过json.dumps(data)方法将Python数据转化为了json数据</span></span><br><span class="line">data = json.dumps(data) <span class="comment"># 当数据中含有中文时，可在括号内加入ensure_ascii=False保证中文成功显示</span></span><br><span class="line"><span class="comment"># 通过json.loads(data)方法将json数据转化为了Python数据</span></span><br><span class="line">data = json.loads(data)</span><br></pre></td></tr></table></figure>
+
+<h2 id="pyecharts模块"><a href="#pyecharts模块" class="headerlink" title="pyecharts模块"></a>pyecharts模块</h2><p>官方网站：pyecharts.org 里面有pyecharts模块的基础介绍<br>       画廊网站：https：&#x2F;&#x2F;gallery.pyrcharts.org&#x2F; 可以在里面选择想要绘制的图形进行浏览和其代码的参考</p>
+<h3 id="pyecharts的基础入门"><a href="#pyecharts的基础入门" class="headerlink" title="pyecharts的基础入门"></a>pyecharts的基础入门</h3><h4 id="基础图形的生成"><a href="#基础图形的生成" class="headerlink" title="基础图形的生成"></a>基础图形的生成</h4><p>· 基础折线图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导包，导入Line功能构建折线图对象</span></span><br><span class="line"><span class="keyword">from</span> pyecharts.charts <span class="keyword">import</span> Line</span><br><span class="line"><span class="comment"># 得到折线图对象</span></span><br><span class="line">line = Line()</span><br><span class="line"><span class="comment"># 添加x轴数据</span></span><br><span class="line">line.add_xaxis([<span class="string">&quot;x1&quot;</span>, <span class="string">&quot;x2&quot;</span>, <span class="string">&quot;x3&quot;</span>])</span><br><span class="line"><span class="comment"># 添加y轴数据</span></span><br><span class="line">line.add_yaxis(<span class="string">&quot;纵轴名&quot;</span>, [y1, y2, y3])</span><br><span class="line"><span class="comment"># 生成图表</span></span><br><span class="line">line.render()     </span><br></pre></td></tr></table></figure>
+
+<p>在生成图表之后，会产生一个.html文件，用浏览器打开该文件即可看到图表</p>
+<h4 id="全局配置选项"><a href="#全局配置选项" class="headerlink" title="全局配置选项"></a>全局配置选项</h4><p>全局配置选项可以用set_global_opts方法来配置，相应的选项、选项的功能如下：<br>    TitleOpts：标题配置项<br>    LegendOpts：图例配置项<br>    ToolboxOpts：工具箱配置项<br>    TooltipOpts：提示框配置项<br>    DataZoomOpts：区域缩放配置项<br>    VisualMapOpts：视觉映射配置项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/26/Python-04/" rel="prev" title="Python 04">
+                  <i class="fa fa-chevron-left"></i> Python 04
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">彭 斌</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">16k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">57 分钟</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
