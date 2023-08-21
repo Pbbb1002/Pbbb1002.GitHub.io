@@ -126,18 +126,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -158,6 +158,460 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/22/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sunflower.jpg">
+      <meta itemprop="name" content="彭 斌">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pbbb's Blog">
+      <meta itemprop="description" content="难怪我永远怀念飞灰">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Pbbb's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/22/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1-01/" class="post-title-link" itemprop="url">数学建模-01</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-22 00:00:00 / 修改时间：01:56:16" itemprop="dateCreated datePublished" datetime="2023-08-22T00:00:00+08:00">2023-08-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/MATLAB/" itemprop="url" rel="index"><span itemprop="name">MATLAB</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/MATLAB/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index"><span itemprop="name">数学建模</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="规划篇"><a href="#规划篇" class="headerlink" title="规划篇"></a>规划篇</h1><h2 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h2><p>线性规则求解需清晰两部分，目标函数（max， min）和约束条件（s.t.），求解前应转化为标准形式：</p>
+<p><img src="/../../../Users/pengbin/AppData/Roaming/Typora/typora-user-images/image-20230822003733685.png" alt="image-20230822003733685"></p>
+<p>目标函数系数 (c)：目标函数是一个线性表达式，由变量的系数组成。目标是最小化目标函数的值。c 是一个包含每个变量对应系数的向量。<br>       不等式约束系数矩阵 A和不等式约束右侧向量 b：不等式约束表示为 A* x ≤ b，其中 A是一个矩阵，每行表示一个约束条件的系数，b 是一个向量，表示对应约束条件的右侧值。<br>       等式约束系数矩阵 Aeq 和等式约束右侧向量 beq：等式约束表示为 Aeq * x &#x3D; beq，其中 Aeq 是一个矩阵，每行表示一个约束条件的系数，beq 是一个向量，表示对应约束条件的右侧值。<br>       变量的下界lb和ub：变量的下界是一个向量，表示每个变量的最小取值限制。默认情况下，变量没有下界限制，可以通过设置 bounds 参数来指定。</p>
+<h3 id="MATLAB求解代码："><a href="#MATLAB求解代码：" class="headerlink" title="MATLAB求解代码："></a>MATLAB求解代码：</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[x, fval] = linprog(c, A, b, Aeq, beq, LB, UB, X0, OPTIONS)</span><br><span class="line"># LB和UB分别为x的上界和下界</span><br></pre></td></tr></table></figure>
+
+<h3 id="Python的cipy库求解："><a href="#Python的cipy库求解：" class="headerlink" title="Python的cipy库求解："></a>Python的cipy库求解：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> optimize</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 求解函数</span></span><br><span class="line">res = optimize.linprog(c, A, b, Aeq, beq, LB, UB, X0, OPTIONS)</span><br><span class="line"><span class="comment"># 若求最大值，在c前加上负号</span></span><br><span class="line"><span class="comment"># 目标函数最小值</span></span><br><span class="line"><span class="built_in">print</span>(res.fun)</span><br><span class="line"><span class="comment"># 最优解</span></span><br><span class="line"><span class="built_in">print</span>(res.x)</span><br></pre></td></tr></table></figure>
+
+<p>演示：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/22/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1-01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/12/Python-07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sunflower.jpg">
+      <meta itemprop="name" content="彭 斌">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pbbb's Blog">
+      <meta itemprop="description" content="难怪我永远怀念飞灰">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Pbbb's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/12/Python-07/" class="post-title-link" itemprop="url">Python 07</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-08-12 00:00:00" itemprop="dateCreated datePublished" datetime="2023-08-12T00:00:00+08:00">2023-08-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-15 02:15:29" itemprop="dateModified" datetime="2023-08-15T02:15:29+08:00">2023-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>​                                      <!-- 展开全文 --></p>
+<h1 id="Python高阶技巧"><a href="#Python高阶技巧" class="headerlink" title="Python高阶技巧"></a>Python高阶技巧</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>定义<strong>双层嵌套函数</strong>，<strong>内部函数</strong>可以访问<strong>外层函数的变量</strong>，将内存函数作为外层函数的返回，此内存函数就是闭包函数</p>
+<p>优点：无需定义全局变量即可实现通过函数持续访问、修改某个值；闭包使用的变量所用于函数内，难以被错误的调用修改<br>       缺点：由于内部函数持续引用外部函数的值，所以会导致这一部分内存空间不被释放，一直占用内存</p>
+<p>简单闭包演示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">outer</span>(<span class="params">w1</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner</span>(<span class="params">w2</span>): <span class="comment"># 闭包函数</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;w1&#125;</span> <span class="subst">&#123;w2&#125;</span> <span class="subst">&#123;w1&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line">fn1 = outer(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">fn1(<span class="string">&quot;World&quot;</span>)</span><br><span class="line"><span class="comment"># 结果：Hello World Hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="nonlocal关键字"><a href="#nonlocal关键字" class="headerlink" title="nonlocal关键字"></a>nonlocal关键字</h3><p>在闭包函数（内部函数中）想要修改外部函数的变量值，需要用到nonlocal声明这个外部变量</p>
+<p>简单演示：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/12/Python-07/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/10/Python-06/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sunflower.jpg">
+      <meta itemprop="name" content="彭 斌">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pbbb's Blog">
+      <meta itemprop="description" content="难怪我永远怀念飞灰">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Pbbb's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/10/Python-06/" class="post-title-link" itemprop="url">Python 06</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-08-10 00:00:00" itemprop="dateCreated datePublished" datetime="2023-08-10T00:00:00+08:00">2023-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-13 00:14:04" itemprop="dateModified" datetime="2023-08-13T00:14:04+08:00">2023-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>​                                  <!-- 展开全文 --></p>
+<h1 id="PySpark入门"><a href="#PySpark入门" class="headerlink" title="PySpark入门"></a>PySpark入门</h1><p>Spark是用于大规模数据处理的统一分析引擎。简单来说，Spark是一款分布式的计算框架，用于调度成百上千的服务器集群，计算TB、PB乃至EB级别的海量数据。而Python，则是Spark重点支持的方向</p>
+<h2 id="基础准备"><a href="#基础准备" class="headerlink" title="基础准备"></a>基础准备</h2><h3 id="构建PySpark执行环境入口对象"><a href="#构建PySpark执行环境入口对象" class="headerlink" title="构建PySpark执行环境入口对象"></a>构建PySpark执行环境入口对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导包</span></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line"><span class="comment"># 创建SparkConf类对象</span></span><br><span class="line">conf = SparkConf().setMaster(<span class="string">&quot;local[*]&quot;</span>).setAppName(<span class="string">&quot;test_spark_app&quot;</span>)</span><br><span class="line"><span class="comment"># 基于SparkConf类对象创建SparkContext类对象</span></span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line"><span class="comment"># 打印PySpark的运行版本</span></span><br><span class="line"><span class="built_in">print</span>(sc.version)</span><br><span class="line"><span class="comment"># 停止SparkContext对象的运行（停止程序）</span></span><br><span class="line">sc.stop()</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h2><h3 id="RDD对象"><a href="#RDD对象" class="headerlink" title="RDD对象"></a>RDD对象</h3><p>PySpark支持多种数据的输入，在输入完成后都会得到一个RDD对象，PySpark针对数据的处理，都是以RDD对象作为载体，即数据存储在RDD内，各类数据的计算方法，也都是RDD的成员方法；RDD的数据计算方法，返回值依旧是RDD对象。</p>
+<h3 id="Python数据容器转RDD对象"><a href="#Python数据容器转RDD对象" class="headerlink" title="Python数据容器转RDD对象"></a>Python数据容器转RDD对象</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/10/Python-06/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/06/SQL%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sunflower.jpg">
+      <meta itemprop="name" content="彭 斌">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pbbb's Blog">
+      <meta itemprop="description" content="难怪我永远怀念飞灰">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Pbbb's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/06/SQL%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">SQL入门</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-08-06 00:00:00" itemprop="dateCreated datePublished" datetime="2023-08-06T00:00:00+08:00">2023-08-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-10 00:36:30" itemprop="dateModified" datetime="2023-08-10T00:36:30+08:00">2023-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SQl/" itemprop="url" rel="index"><span itemprop="name">SQl</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>961</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>​                                        <!-- 展开全文 --></p>
+<h1 id="数据库和SQL"><a href="#数据库和SQL" class="headerlink" title="数据库和SQL"></a>数据库和SQL</h1><p>数据库就是指数据存储的库，作用就是组织数据并存储数据。数据库按照库 — 表 — 数据三个层级进行组织。而SQL语言是用于访问和处理数据库的标准的计算机语言</p>
+<h2 id="SQL基础"><a href="#SQL基础" class="headerlink" title="SQL基础"></a>SQL基础</h2><h3 id="SQL语言的分类"><a href="#SQL语言的分类" class="headerlink" title="SQL语言的分类"></a>SQL语言的分类</h3><p>由于数据库管理系统（数据库软件）功能非常多，不仅仅是存储数据还包含数据的管理、表的管理、库的管理、账户管理、权限管理等等。</p>
+<p>所以操作数据库的SQL语言也基于功能可以划分为四类：</p>
+<p>· 数据定义：DDL —— 实现库的创建删除、表的创建删除等<br>       · 数据操纵：DML —— 实现新增数据、删除数据、修改数据等<br>       · 数据控制：DCL —— 实现新增用户、删除用户、密码修改、权限管理等<br>       · 数据查询：DQL —— 基于需求查询和计算数据</p>
+<h3 id="SQL的语法特征"><a href="#SQL的语法特征" class="headerlink" title="SQL的语法特征"></a>SQL的语法特征</h3><p>· SQL 语言大小写不敏感<br>       · SQL 可以单行或者多行书写，最后以” ; “结束<br>       · SQL 只支持单引号<br>       · SQL支持注释：<br>                    · 单行注释：–注释内容（–后面一定要有一个空格）<br>                    · 单行注释：# 注释内容（# 后面可以不加空格，推荐加上）<br>                    · 多行注释：&#x2F;* 注释内容 *&#x2F;</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/06/SQL%E5%85%A5%E9%97%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -203,7 +657,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-04 01:39:08" itemprop="dateModified" datetime="2023-08-04T01:39:08+08:00">2023-08-04</time>
+      <time title="修改时间：2023-08-10 18:10:48" itemprop="dateModified" datetime="2023-08-10T18:10:48+08:00">2023-08-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -222,14 +676,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
+      <span>3.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span>12 分钟</span>
     </span>
 </div>
 
@@ -257,105 +711,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/29/Python-06/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/sunflower.jpg">
-      <meta itemprop="name" content="彭 斌">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pbbb's Blog">
-      <meta itemprop="description" content="难怪我永远怀念飞灰">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Pbbb's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/29/Python-06/" class="post-title-link" itemprop="url">Python 05</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-07-29 00:00:00" itemprop="dateCreated datePublished" datetime="2023-07-29T00:00:00+08:00">2023-07-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-04 01:38:34" itemprop="dateModified" datetime="2023-08-04T01:38:34+08:00">2023-08-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
       
     </div>
 
@@ -756,7 +1111,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-07-29 01:58:08" itemprop="dateModified" datetime="2023-07-29T01:58:08+08:00">2023-07-29</time>
+      <time title="修改时间：2023-08-11 22:46:37" itemprop="dateModified" datetime="2023-08-11T22:46:37+08:00">2023-08-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -939,112 +1294,9 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/04/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/sunflower.jpg">
-      <meta itemprop="name" content="彭 斌">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pbbb's Blog">
-      <meta itemprop="description" content="难怪我永远怀念飞灰">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Pbbb's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/04/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-07-04 00:00:00" itemprop="dateCreated datePublished" datetime="2023-07-04T00:00:00+08:00">2023-07-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-07-26 21:59:55" itemprop="dateModified" datetime="2023-07-26T21:59:55+08:00">2023-07-26</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>82</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>​                                          <!-- 展开全文 --></p>
-<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/04/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
 </div>
   </main>
@@ -1065,13 +1317,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">19k</span>
+    <span title="站点总字数">25k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:08</span>
+    <span title="站点阅读时长">1:32</span>
   </span>
 </div>
 

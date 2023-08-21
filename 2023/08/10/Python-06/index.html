@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-bounce.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="​                                   PySpark入门Spark是用于大规模数据处理的统一分析引擎。简单来说，Spark是一款分布式的计算框架，用于调度成百上千的服务器集群，计算TB、PB乃至EB级别的海量数据。而Python，则是Spark重点支持的方向 基础准备构建PySpark执行环境入口对象12345678910# 导包from pyspark impo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 06">
+<meta property="og:url" content="http://example.com/2023/08/10/Python-06/index.html">
+<meta property="og:site_name" content="Pbbb&#39;s Blog">
+<meta property="og:description" content="​                                   PySpark入门Spark是用于大规模数据处理的统一分析引擎。简单来说，Spark是一款分布式的计算框架，用于调度成百上千的服务器集群，计算TB、PB乃至EB级别的海量数据。而Python，则是Spark重点支持的方向 基础准备构建PySpark执行环境入口对象12345678910# 导包from pyspark impo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-12T16:14:04.770Z">
+<meta property="article:author" content="彭 斌">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="数据处理">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/08/10/Python-06/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/10/Python-06/","path":"2023/08/10/Python-06/","title":"Python 06"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python 06 | Pbbb's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Pbbb's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PySpark%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">PySpark入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%87%86%E5%A4%87"><span class="nav-number">1.1.</span> <span class="nav-text">基础准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E5%BB%BAPySpark%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%85%A5%E5%8F%A3%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.1.</span> <span class="nav-text">构建PySpark执行环境入口对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5"><span class="nav-number">1.2.</span> <span class="nav-text">数据输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.1.</span> <span class="nav-text">RDD对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python%E6%95%B0%E6%8D%AE%E5%AE%B9%E5%99%A8%E8%BD%ACRDD%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.2.</span> <span class="nav-text">Python数据容器转RDD对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97"><span class="nav-number">1.3.</span> <span class="nav-text">数据计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#map%E7%AE%97%E5%AD%90"><span class="nav-number">1.3.1.</span> <span class="nav-text">map算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flatmap%E7%AE%97%E5%AD%90"><span class="nav-number">1.3.2.</span> <span class="nav-text">flatmap算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduceByKey%E7%AE%97%E5%AD%90"><span class="nav-number">1.3.3.</span> <span class="nav-text">reduceByKey算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter%E7%AE%97%E5%AD%90"><span class="nav-number">1.3.4.</span> <span class="nav-text">filter算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#distinct%E7%AE%97%E5%AD%90"><span class="nav-number">1.3.5.</span> <span class="nav-text">distinct算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sortby%E7%AE%97%E5%AD%90"><span class="nav-number">1.3.6.</span> <span class="nav-text">sortby算子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA"><span class="nav-number">1.4.</span> <span class="nav-text">数据输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E4%B8%BAPython%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.4.1.</span> <span class="nav-text">输出为Python对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#collect%E7%AE%97%E5%AD%90"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">collect算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce%E7%AE%97%E5%AD%90"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">reduce算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#take%E7%AE%97%E5%AD%90"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">take算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#count%E7%AE%97%E5%AD%90"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">count算子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E5%88%B0%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="nav-number">1.4.2.</span> <span class="nav-text">输出到文件中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#saveAsTextFile%E7%AE%97%E5%AD%90"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">saveAsTextFile算子</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="彭 斌"
+      src="/images/sunflower.jpg">
+  <p class="site-author-name" itemprop="name">彭 斌</p>
+  <div class="site-description" itemprop="description">难怪我永远怀念飞灰</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/10/Python-06/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sunflower.jpg">
+      <meta itemprop="name" content="彭 斌">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pbbb's Blog">
+      <meta itemprop="description" content="难怪我永远怀念飞灰">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python 06 | Pbbb's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python 06
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-08-10 00:00:00" itemprop="dateCreated datePublished" datetime="2023-08-10T00:00:00+08:00">2023-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-13 00:14:04" itemprop="dateModified" datetime="2023-08-13T00:14:04+08:00">2023-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>​                                  <!-- 展开全文 --></p>
+<h1 id="PySpark入门"><a href="#PySpark入门" class="headerlink" title="PySpark入门"></a>PySpark入门</h1><p>Spark是用于大规模数据处理的统一分析引擎。简单来说，Spark是一款分布式的计算框架，用于调度成百上千的服务器集群，计算TB、PB乃至EB级别的海量数据。而Python，则是Spark重点支持的方向</p>
+<h2 id="基础准备"><a href="#基础准备" class="headerlink" title="基础准备"></a>基础准备</h2><h3 id="构建PySpark执行环境入口对象"><a href="#构建PySpark执行环境入口对象" class="headerlink" title="构建PySpark执行环境入口对象"></a>构建PySpark执行环境入口对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导包</span></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line"><span class="comment"># 创建SparkConf类对象</span></span><br><span class="line">conf = SparkConf().setMaster(<span class="string">&quot;local[*]&quot;</span>).setAppName(<span class="string">&quot;test_spark_app&quot;</span>)</span><br><span class="line"><span class="comment"># 基于SparkConf类对象创建SparkContext类对象</span></span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line"><span class="comment"># 打印PySpark的运行版本</span></span><br><span class="line"><span class="built_in">print</span>(sc.version)</span><br><span class="line"><span class="comment"># 停止SparkContext对象的运行（停止程序）</span></span><br><span class="line">sc.stop()</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h2><h3 id="RDD对象"><a href="#RDD对象" class="headerlink" title="RDD对象"></a>RDD对象</h3><p>PySpark支持多种数据的输入，在输入完成后都会得到一个RDD对象，PySpark针对数据的处理，都是以RDD对象作为载体，即数据存储在RDD内，各类数据的计算方法，也都是RDD的成员方法；RDD的数据计算方法，返回值依旧是RDD对象。</p>
+<h3 id="Python数据容器转RDD对象"><a href="#Python数据容器转RDD对象" class="headerlink" title="Python数据容器转RDD对象"></a>Python数据容器转RDD对象</h3><p>PySpark支持通过SparkContext对象的parallellize成员方法将数据容器转换为RDD对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line">conf = SparkConf().setMaster(<span class="string">&quot;local[*]&quot;</span>).setAppName(<span class="string">&quot;test_spark_app&quot;</span>)</span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line">rdd = sc.parallelize(数据容器对象)</span><br><span class="line"><span class="comment"># 输出RDD的内容</span></span><br><span class="line"><span class="built_in">print</span>(rdd.collect())</span><br><span class="line">sc.stop</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>字符串会被拆分为一个个字符存入RDD对象，字典仅有Key会被存入RDD对象</p>
+<p>PySpark也支持通过SparkContext入口对象来读取文件，来构造出RDD对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line">conf = SparkConf().setMaster(<span class="string">&quot;local[*]&quot;</span>).setAppName(<span class="string">&quot;test_spark_app&quot;</span>)</span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line">rdd = sc.textFile(文件路径)</span><br><span class="line"><span class="comment"># 打印RDD内容</span></span><br><span class="line"><span class="built_in">print</span>(rdd.collect())</span><br><span class="line">sc.stop</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据计算"><a href="#数据计算" class="headerlink" title="数据计算"></a>数据计算</h2><h3 id="map算子"><a href="#map算子" class="headerlink" title="map算子"></a>map算子</h3><p>功能：将RDD的数据一条条处理，返回新的RDD；处理的一句是map方法中接收的函数</p>
+<p><strong>map中传入的函数必须能接收参数并且有返回值</strong></p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdd.map(function)</span><br></pre></td></tr></table></figure>
+
+<p>演示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line">conf = SparkConf().setMaster(<span class="string">&quot;local[*]&quot;</span>).setAppName(<span class="string">&quot;test_spark_app&quot;</span>)</span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line"><span class="comment"># 准备函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="keyword">return</span> data * <span class="number">10</span> </span><br><span class="line"><span class="comment"># 准备一个RDD</span></span><br><span class="line">rdd1 = sc.parallelize([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="comment"># 通过map方法将全部数据乘以10</span></span><br><span class="line">rdd2 = rdd1.<span class="built_in">map</span>(func)</span><br><span class="line"><span class="comment"># 使用匿名函数写法</span></span><br><span class="line">rdd3 = rdd1.<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x*<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 使用链式调用使数据在乘以10的基础上加5</span></span><br><span class="line">rdd4 = rdd1.<span class="built_in">map</span>(<span class="keyword">lambda</span> x： x*<span class="number">10</span>).<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x+<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(rdd4.collect()) <span class="comment"># 结果：[15, 25, 35, 45, 55]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="flatmap算子"><a href="#flatmap算子" class="headerlink" title="flatmap算子"></a>flatmap算子</h3><p>功能：对RDD执行map操作，然后进行<strong>解除嵌套</strong>操作</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdd.flatmap(function)</span><br></pre></td></tr></table></figure>
+
+<p>演示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line">conf = SparkConf().setMaster(<span class="string">&quot;local[*]&quot;</span>).setAppName(<span class="string">&quot;test_spark_app&quot;</span>)</span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line"><span class="comment"># 准备一个RDD</span></span><br><span class="line">rdd = sc.parallelize([<span class="string">&quot;hello world&quot;</span>, <span class="string">&quot;Hello World&quot;</span>])</span><br><span class="line"><span class="comment"># 需求：将字符串一个个提取出来</span></span><br><span class="line">rdd1 = rdd.flatmap(<span class="keyword">lambda</span> x: x.split)</span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line"><span class="built_in">print</span>(rdd1.collect()) <span class="comment"># 结果: [&#x27;hello&#x27;, &#x27;world&#x27;, &#x27;Hello&#x27;, &#x27;World&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="reduceByKey算子"><a href="#reduceByKey算子" class="headerlink" title="reduceByKey算子"></a>reduceByKey算子</h3><p>功能：针对KV型(二元元组)RDD，自动按照key分组，然后根据提供的聚合逻辑，完成组内数据(value)的聚合操作</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdd.reduceByKey(function)</span><br></pre></td></tr></table></figure>
+
+<p>演示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line">conf = SparkConf().setMaster(<span class="string">&quot;local[*]&quot;</span>).setAppName(<span class="string">&quot;test_spark_app&quot;</span>)</span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line"><span class="comment"># 准备一个RDD</span></span><br><span class="line">rdd = sc.parallelize([(<span class="string">&#x27;a&#x27;</span>, <span class="number">0</span>),(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;b&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>)])</span><br><span class="line">result = rdd.reduceByKey(<span class="keyword">lambda</span> a, b:a + b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;result.collect()&quot;</span>)</span><br><span class="line"><span class="comment"># 结果：[(&#x27;b&#x27;, 3), (&#x27;a&#x27;, 2)]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：reduceByKey中接收到函数，只负责聚合，不理会分组</p>
+<h3 id="filter算子"><a href="#filter算子" class="headerlink" title="filter算子"></a>filter算子</h3><p>功能：接受一个处理函数，函数对rdd逐个处理，得到True的保留至返回值的rdd中</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdd.fliter(function)</span><br></pre></td></tr></table></figure>
+
+<p>演示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line"><span class="keyword">if</span> __name__ = <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    conf = SparkConf().setAppName(<span class="string">&quot;create rdd&quot;</span>).setMaster(<span class="string">&quot;local[*]&quot;</span>)</span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line">rdd = sc.parallelize([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="comment"># 保留奇数</span></span><br><span class="line">rdd1 = rdd.<span class="built_in">filter</span>(<span class="keyword">lambda</span> x: (x % <span class="number">2</span> == <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(rdd.collect())</span><br><span class="line"><span class="comment"># 结果: [1，3, 5]</span></span><br></pre></td></tr></table></figure>
+
+<p>传入值可以是任意类型，返回值必须是True或False</p>
+<h3 id="distinct算子"><a href="#distinct算子" class="headerlink" title="distinct算子"></a>distinct算子</h3><p>功能：对rdd数据进行去重，返回新的rdd</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdd.distinct()</span><br></pre></td></tr></table></figure>
+
+<p>演示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line"><span class="keyword">if</span> __name__ = <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    conf = SparkConf().setAppName(<span class="string">&quot;create rdd&quot;</span>).setMaster(<span class="string">&quot;local[*]&quot;</span>)</span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line">rdd = sc.parallelize([<span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>])</span><br><span class="line">rdd1 = rdd.distinct()</span><br><span class="line"><span class="built_in">print</span>(rdd1.collect())</span><br><span class="line"><span class="comment"># 结果：[1 ,3, 4]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="sortby算子"><a href="#sortby算子" class="headerlink" title="sortby算子"></a>sortby算子</h3><p>功能：对rdd数据基于自定义顺序进行排序</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rdd.sortBy(function, ascending = <span class="literal">False</span>, numpartitions= )</span><br><span class="line"><span class="comment"># function: 告知按照rdd中的哪个数据进行排序</span></span><br><span class="line"><span class="comment"># ascending：True升序，False降序</span></span><br><span class="line"><span class="comment"># numpartitons：用多少分区排序</span></span><br></pre></td></tr></table></figure>
+
+<p>演示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line">conf = SparkConf().setMaster(<span class="string">&quot;local[*]&quot;</span>).setAppName(<span class="string">&quot;test_spark_app&quot;</span>)</span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line"><span class="comment"># 准备一个RDD</span></span><br><span class="line">rdd = sc.parallelize([(<span class="string">&#x27;a&#x27;</span>, <span class="number">0</span>),(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;b&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>)])</span><br><span class="line">rdd1 = rdd.reduceByKey(<span class="keyword">lambda</span> a, b:a + b)</span><br><span class="line"><span class="built_in">print</span>(rdd1.collect())</span><br><span class="line"><span class="comment"># 结果：[(&#x27;b&#x27;, 3), (&#x27;a&#x27;, 2)]</span></span><br><span class="line">rdd2 = rdd1.sortBy(<span class="keyword">lambda</span> x: x[<span class="number">1</span>],ascending = <span class="literal">True</span>, numpartiton = <span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(rdd2.collect())</span><br><span class="line"><span class="comment"># 结果：[(&#x27;a&#x27;, 2), (&#x27;b&#x27;, 3)]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数据输出"><a href="#数据输出" class="headerlink" title="数据输出"></a>数据输出</h2><h3 id="输出为Python对象"><a href="#输出为Python对象" class="headerlink" title="输出为Python对象"></a>输出为Python对象</h3><h4 id="collect算子"><a href="#collect算子" class="headerlink" title="collect算子"></a>collect算子</h4><p>功能：将rdd内容转换为list</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdd.collect()</span><br></pre></td></tr></table></figure>
+
+<h4 id="reduce算子"><a href="#reduce算子" class="headerlink" title="reduce算子"></a>reduce算子</h4><p>功能：对rdd内容进行自定义聚合</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rdd.reduce(function)</span><br><span class="line"><span class="comment"># func(T, T) -&gt; T</span></span><br><span class="line"><span class="comment"># 两个参数传入，一个返回值，返回值要求和参数要求一致</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="take算子"><a href="#take算子" class="headerlink" title="take算子"></a>take算子</h4><p>功能：取出rdd的前N个元素组成list</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sc.parallelize([<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]).take(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<h4 id="count算子"><a href="#count算子" class="headerlink" title="count算子"></a>count算子</h4><p>功能：统计rdd元素个数</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sc.parallelize([<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]).count()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="输出到文件中"><a href="#输出到文件中" class="headerlink" title="输出到文件中"></a>输出到文件中</h3><h4 id="saveAsTextFile算子"><a href="#saveAsTextFile算子" class="headerlink" title="saveAsTextFile算子"></a>saveAsTextFile算子</h4><p>功能：将rdd的数据写入文本文件中，支持本地写出，hdfs等文件系统</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rdd = sc.parallelize([<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])</span><br><span class="line">rdd.saveAsTextFile(<span class="string">&quot;文件路径&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用前需要配置HADOOP环境</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" rel="tag"># 数据处理</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/06/SQL%E5%85%A5%E9%97%A8/" rel="prev" title="SQL入门">
+                  <i class="fa fa-chevron-left"></i> SQL入门
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/12/Python-07/" rel="next" title="Python 07">
+                  Python 07 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">彭 斌</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">25k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:32</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+

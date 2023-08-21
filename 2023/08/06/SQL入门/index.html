@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-bounce.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="​                                         数据库和SQL数据库就是指数据存储的库，作用就是组织数据并存储数据。数据库按照库 — 表 — 数据三个层级进行组织。而SQL语言是用于访问和处理数据库的标准的计算机语言 SQL基础SQL语言的分类由于数据库管理系统（数据库软件）功能非常多，不仅仅是存储数据还包含数据的管理、表的管理、库的管理、账户管理、权限管理等等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL入门">
+<meta property="og:url" content="http://example.com/2023/08/06/SQL%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Pbbb&#39;s Blog">
+<meta property="og:description" content="​                                         数据库和SQL数据库就是指数据存储的库，作用就是组织数据并存储数据。数据库按照库 — 表 — 数据三个层级进行组织。而SQL语言是用于访问和处理数据库的标准的计算机语言 SQL基础SQL语言的分类由于数据库管理系统（数据库软件）功能非常多，不仅仅是存储数据还包含数据的管理、表的管理、库的管理、账户管理、权限管理等等">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-09T16:36:30.656Z">
+<meta property="article:author" content="彭 斌">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/08/06/SQL%E5%85%A5%E9%97%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/06/SQL%E5%85%A5%E9%97%A8/","path":"2023/08/06/SQL入门/","title":"SQL入门"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SQL入门 | Pbbb's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Pbbb's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CSQL"><span class="nav-number">1.</span> <span class="nav-text">数据库和SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">SQL基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL%E8%AF%AD%E8%A8%80%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.1.</span> <span class="nav-text">SQL语言的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL%E7%9A%84%E8%AF%AD%E6%B3%95%E7%89%B9%E5%BE%81"><span class="nav-number">1.1.2.</span> <span class="nav-text">SQL的语法特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="nav-number">1.1.3.</span> <span class="nav-text">基本语法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.4.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DDL%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">DDL语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DML%E8%AF%AD%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">DML语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8F%92%E5%85%A5-insert"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据插入 insert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%88%A0%E9%99%A4delete"><span class="nav-number">1.3.2.</span> <span class="nav-text">数据删除delete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0update"><span class="nav-number">1.3.3.</span> <span class="nav-text">数据更新update</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DQL%E8%AF%AD%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">DQL语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.4.1.</span> <span class="nav-text">基础数据查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E8%81%9A%E5%90%88"><span class="nav-number">1.4.2.</span> <span class="nav-text">分组聚合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F-%E5%88%86%E9%A1%B5"><span class="nav-number">1.4.3.</span> <span class="nav-text">排序&amp;分页</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E6%8E%92%E5%BA%8F"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">结果排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E5%88%86%E9%A1%B5%E6%98%BE%E7%A4%BA"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">结果分页显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">关键字的注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-MySQL"><span class="nav-number">1.5.</span> <span class="nav-text">python &amp; MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%88%B0mysql%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E9%93%BE%E6%8E%A5"><span class="nav-number">1.5.1.</span> <span class="nav-text">创建到mysql的数据库链接</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="彭 斌"
+      src="/images/sunflower.jpg">
+  <p class="site-author-name" itemprop="name">彭 斌</p>
+  <div class="site-description" itemprop="description">难怪我永远怀念飞灰</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/06/SQL%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sunflower.jpg">
+      <meta itemprop="name" content="彭 斌">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pbbb's Blog">
+      <meta itemprop="description" content="难怪我永远怀念飞灰">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SQL入门 | Pbbb's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SQL入门
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-08-06 00:00:00" itemprop="dateCreated datePublished" datetime="2023-08-06T00:00:00+08:00">2023-08-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-10 00:36:30" itemprop="dateModified" datetime="2023-08-10T00:36:30+08:00">2023-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SQl/" itemprop="url" rel="index"><span itemprop="name">SQl</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>961</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>​                                        <!-- 展开全文 --></p>
+<h1 id="数据库和SQL"><a href="#数据库和SQL" class="headerlink" title="数据库和SQL"></a>数据库和SQL</h1><p>数据库就是指数据存储的库，作用就是组织数据并存储数据。数据库按照库 — 表 — 数据三个层级进行组织。而SQL语言是用于访问和处理数据库的标准的计算机语言</p>
+<h2 id="SQL基础"><a href="#SQL基础" class="headerlink" title="SQL基础"></a>SQL基础</h2><h3 id="SQL语言的分类"><a href="#SQL语言的分类" class="headerlink" title="SQL语言的分类"></a>SQL语言的分类</h3><p>由于数据库管理系统（数据库软件）功能非常多，不仅仅是存储数据还包含数据的管理、表的管理、库的管理、账户管理、权限管理等等。</p>
+<p>所以操作数据库的SQL语言也基于功能可以划分为四类：</p>
+<p>· 数据定义：DDL —— 实现库的创建删除、表的创建删除等<br>       · 数据操纵：DML —— 实现新增数据、删除数据、修改数据等<br>       · 数据控制：DCL —— 实现新增用户、删除用户、密码修改、权限管理等<br>       · 数据查询：DQL —— 基于需求查询和计算数据</p>
+<h3 id="SQL的语法特征"><a href="#SQL的语法特征" class="headerlink" title="SQL的语法特征"></a>SQL的语法特征</h3><p>· SQL 语言大小写不敏感<br>       · SQL 可以单行或者多行书写，最后以” ; “结束<br>       · SQL 只支持单引号<br>       · SQL支持注释：<br>                    · 单行注释：–注释内容（–后面一定要有一个空格）<br>                    · 单行注释：# 注释内容（# 后面可以不加空格，推荐加上）<br>                    · 多行注释：&#x2F;* 注释内容 *&#x2F;</p>
+<h3 id="基本语法："><a href="#基本语法：" class="headerlink" title="基本语法："></a>基本语法：</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>创建数据库：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 数据库名称 [ CHARSET UTF8 ]</span><br></pre></td></tr></table></figure>
+
+<p>查看数据库：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> DATABASES;</span><br></pre></td></tr></table></figure>
+
+<p>使用数据库：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE 数据库名称;</span><br></pre></td></tr></table></figure>
+
+<p>删除数据库：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE;</span><br></pre></td></tr></table></figure>
+
+<p>查看当前使用的数据库：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELELCT DATABASE( );</span><br></pre></td></tr></table></figure>
+
+<h2 id="DDL语法"><a href="#DDL语法" class="headerlink" title="DDL语法"></a>DDL语法</h2><p>查看表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> TABLES;</span><br><span class="line"><span class="comment">-- 注意：需要先选择数据库</span></span><br></pre></td></tr></table></figure>
+
+<p>删除表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> 表名称;    </span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> 表名称;</span><br></pre></td></tr></table></figure>
+
+<p>创建表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名称(</span><br><span class="line">     列名称 列类型，</span><br><span class="line">     列名称 列类型，</span><br><span class="line">	…………   </span><br><span class="line">)</span><br><span class="line"><span class="comment">-- 列类型有</span></span><br><span class="line"><span class="type">int</span>                    <span class="comment">-- 整数</span></span><br><span class="line"><span class="type">float</span>                  <span class="comment">-- 浮点数</span></span><br><span class="line"><span class="type">varchar</span>(长度)           <span class="comment">-- 文本长度为数字，做最大长度限制</span></span><br><span class="line">data                   <span class="comment">-- 日期类型</span></span><br><span class="line"><span class="type">timestamp</span>              <span class="comment">-- 时间戳类型</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="DML语法"><a href="#DML语法" class="headerlink" title="DML语法"></a>DML语法</h2><h3 id="数据插入-insert"><a href="#数据插入-insert" class="headerlink" title="数据插入 insert"></a>数据插入 insert</h3><p>基础语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表[(列<span class="number">1</span>， 列<span class="number">2</span>，…… ，列n)] <span class="keyword">values</span>(值<span class="number">1</span>， 值<span class="number">2</span>，…… ，值n)</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据删除delete"><a href="#数据删除delete" class="headerlink" title="数据删除delete"></a>数据删除delete</h3><p>基础语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名称 [ <span class="keyword">where</span> 条件判断 ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据更新update"><a href="#数据更新update" class="headerlink" title="数据更新update"></a>数据更新update</h3><p>基础语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 列<span class="operator">=</span>值 [ <span class="keyword">where</span> 条件判断 ]</span><br><span class="line"><span class="comment">-- 当不进行where操作时，整个列将全部更新</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="DQL语法"><a href="#DQL语法" class="headerlink" title="DQL语法"></a>DQL语法</h2><h3 id="基础数据查询"><a href="#基础数据查询" class="headerlink" title="基础数据查询"></a>基础数据查询</h3><p>基础语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 字段列表\<span class="operator">*</span> <span class="keyword">from</span> 表</span><br><span class="line"><span class="comment">-- &quot;*&quot;表示所有</span></span><br></pre></td></tr></table></figure>
+
+<p>含义就是：从表中选择某些列进行展示 </p>
+<p>当需要过滤条件时，语法为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 字段列表\<span class="operator">*</span> <span class="keyword">from</span> 表 <span class="keyword">where</span> 条件判断</span><br></pre></td></tr></table></figure>
+
+<h3 id="分组聚合"><a href="#分组聚合" class="headerlink" title="分组聚合"></a>分组聚合</h3><p>基础语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 字段\聚合函数 <span class="keyword">from</span> 表 [ <span class="keyword">where</span> 条件 ] <span class="keyword">group</span> <span class="keyword">by</span> 列</span><br><span class="line"><span class="comment">-- group中出现了哪个列，哪个；列才能出现在select中的非聚合中</span></span><br><span class="line"> <span class="comment">/*</span></span><br><span class="line"><span class="comment"> 聚合函数有</span></span><br><span class="line"><span class="comment"> sum() -求和</span></span><br><span class="line"><span class="comment"> avg() -求平均值</span></span><br><span class="line"><span class="comment"> min() -求最小值</span></span><br><span class="line"><span class="comment"> max() -求最大值</span></span><br><span class="line"><span class="comment"> count() -求数量</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="排序-分页"><a href="#排序-分页" class="headerlink" title="排序&amp;分页"></a>排序&amp;分页</h3><h4 id="结果排序"><a href="#结果排序" class="headerlink" title="结果排序"></a>结果排序</h4><p>基础语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 列\聚合函数\<span class="operator">*</span> <span class="keyword">from</span> 表</span><br><span class="line"><span class="keyword">where</span> …</span><br><span class="line"><span class="keyword">group</span> …</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> … [<span class="keyword">asc</span> <span class="operator">|</span> <span class="keyword">desc</span>]</span><br><span class="line"><span class="comment">-- asc表示升序，desc表示降序</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="结果分页显示"><a href="#结果分页显示" class="headerlink" title="结果分页显示"></a>结果分页显示</h4><p>基础语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 列\聚合函数\<span class="operator">*</span> <span class="keyword">from</span> 表</span><br><span class="line"><span class="keyword">where</span> …</span><br><span class="line"><span class="keyword">group</span> …</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> … [<span class="keyword">asc</span> <span class="operator">|</span> <span class="keyword">desc</span>]</span><br><span class="line">limit n, m</span><br><span class="line"><span class="comment">-- n，m表示把前n条跳过，从第n+1条开始取m条</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="关键字的注意事项"><a href="#关键字的注意事项" class="headerlink" title="关键字的注意事项"></a>关键字的注意事项</h4><p>· where &#x2F; group by &#x2F; order by &#x2F; limit 均可按要求省略，select 和 from是必写的</p>
+<p>· 关键字的执行顺序是：from -&gt; where -&gt;group by -&gt; select -&gt; order by -&gt; limit</p>
+<h2 id="python-MySQL"><a href="#python-MySQL" class="headerlink" title="python &amp; MySQL"></a>python &amp; MySQL</h2><h3 id="创建到mysql的数据库链接"><a href="#创建到mysql的数据库链接" class="headerlink" title="创建到mysql的数据库链接"></a>创建到mysql的数据库链接</h3><p>代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mysql <span class="keyword">import</span> Connection</span><br><span class="line"><span class="comment"># 获取到mysql数据库的链接对象</span></span><br><span class="line">conn = Connection(</span><br><span class="line">	host=<span class="string">&#x27;localhost&#x27;</span>, <span class="comment"># 主机名（或ip地址）</span></span><br><span class="line">    port=<span class="number">3306</span>, <span class="comment"># 端口，默认3306</span></span><br><span class="line">    user=<span class="string">&#x27;root&#x27;</span>, <span class="comment"># 账户名</span></span><br><span class="line">    password=<span class="string">&#x27;123456&#x27;</span>,<span class="comment"># 密码</span></span><br><span class="line">    <span class="comment"># autocommit=True 自动提交</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"># 打印mysql数据库软件信息</span></span><br><span class="line"><span class="built_in">print</span>(conn.get_server_info())</span><br><span class="line"><span class="comment"># 执行非查询性质sql</span></span><br><span class="line">cursor = conn.cursor()</span><br><span class="line"><span class="comment"># 选择数据库</span></span><br><span class="line">conn.select_db(<span class="string">&quot;test&quot;</span>)</span><br><span class="line"><span class="comment"># 执行sql</span></span><br><span class="line">sursor.execute(<span class="string">&quot;create table test_pymysql(id int)&quot;</span>)</span><br><span class="line"><span class="comment"># 手动通过commit确认</span></span><br><span class="line">conn.commit()</span><br><span class="line"><span class="comment"># 关闭到数据库的链接</span></span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/29/Python-05/" rel="prev" title="Python 05">
+                  <i class="fa fa-chevron-left"></i> Python 05
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/10/Python-06/" rel="next" title="Python 06">
+                  Python 06 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">彭 斌</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">25k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:32</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
