@@ -185,7 +185,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/22/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1-01/" class="post-title-link" itemprop="url">数学建模-01</a>
+          <a href="/2023/08/22/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1-01/" class="post-title-link" itemprop="url">数学建模算法</a>
         </h2>
 
         <div class="post-meta-container">
@@ -195,9 +195,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-08-22 00:00:00 / 修改时间：01:56:16" itemprop="dateCreated datePublished" datetime="2023-08-22T00:00:00+08:00">2023-08-22</time>
+      <time title="创建时间：2023-08-22 00:00:00" itemprop="dateCreated datePublished" datetime="2023-08-22T00:00:00+08:00">2023-08-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-28 01:29:17" itemprop="dateModified" datetime="2023-08-28T01:29:17+08:00">2023-08-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -224,14 +230,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.4k</span>
+      <span>4.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>16 分钟</span>
     </span>
 </div>
 
@@ -243,11 +249,11 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="规划篇"><a href="#规划篇" class="headerlink" title="规划篇"></a>规划篇</h1><h2 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h2><p>线性规则求解需清晰两部分，目标函数（max， min）和约束条件（s.t.），求解前应转化为标准形式：</p>
-<p><img src="/../../../Users/pengbin/AppData/Roaming/Typora/typora-user-images/image-20230822003733685.png" alt="image-20230822003733685"></p>
-<p>目标函数系数 (c)：目标函数是一个线性表达式，由变量的系数组成。目标是最小化目标函数的值。c 是一个包含每个变量对应系数的向量。<br>       不等式约束系数矩阵 A和不等式约束右侧向量 b：不等式约束表示为 A* x ≤ b，其中 A是一个矩阵，每行表示一个约束条件的系数，b 是一个向量，表示对应约束条件的右侧值。<br>       等式约束系数矩阵 Aeq 和等式约束右侧向量 beq：等式约束表示为 Aeq * x &#x3D; beq，其中 Aeq 是一个矩阵，每行表示一个约束条件的系数，beq 是一个向量，表示对应约束条件的右侧值。<br>       变量的下界lb和ub：变量的下界是一个向量，表示每个变量的最小取值限制。默认情况下，变量没有下界限制，可以通过设置 bounds 参数来指定。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Pbbb1002/MyBlog@main/img/image-20230822174736880.png" alt="image-20230822174736880"></p>
+<p>数 (c)：目标函数是一个线性表达式，由变量的系数组成。目标是最小化目标函数的值。c 是一个包含每个变量对应系数的向量。<br>       不等式约束系数矩阵 A和不等式约束右侧向量 b：不等式约束表示为 A* x ≤ b，其中 A是一个矩阵，每行表示一个约束条件的系数，b 是一个向量，表示对应约束条件的右侧值。<br>       等式约束系数矩阵 Aeq 和等式约束右侧向量 beq：等式约束表示为 Aeq * x &#x3D; beq，其中 Aeq 是一个矩阵，每行表示一个约束条件的系数，beq 是一个向量，表示对应约束条件的右侧值。<br>       变量的下界lb和ub：变量的下界是一个向量，表示每个变量的最小取值限制。默认情况下，变量没有下界限制，可以通过设置 bounds 参数来指定。</p>
 <h3 id="MATLAB求解代码："><a href="#MATLAB求解代码：" class="headerlink" title="MATLAB求解代码："></a>MATLAB求解代码：</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[x, fval] = linprog(c, A, b, Aeq, beq, LB, UB, X0, OPTIONS)</span><br><span class="line"># LB和UB分别为x的上界和下界</span><br></pre></td></tr></table></figure>
 
-<h3 id="Python的cipy库求解："><a href="#Python的cipy库求解：" class="headerlink" title="Python的cipy库求解："></a>Python的cipy库求解：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> optimize</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 求解函数</span></span><br><span class="line">res = optimize.linprog(c, A, b, Aeq, beq, LB, UB, X0, OPTIONS)</span><br><span class="line"><span class="comment"># 若求最大值，在c前加上负号</span></span><br><span class="line"><span class="comment"># 目标函数最小值</span></span><br><span class="line"><span class="built_in">print</span>(res.fun)</span><br><span class="line"><span class="comment"># 最优解</span></span><br><span class="line"><span class="built_in">print</span>(res.x)</span><br></pre></td></tr></table></figure>
+<h3 id="Python的scipy库求解："><a href="#Python的scipy库求解：" class="headerlink" title="Python的scipy库求解："></a>Python的scipy库求解：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> optimize</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 求解函数</span></span><br><span class="line">res = optimize.linprog(c, A, b, Aeq, beq, LB, UB, X0, OPTIONS)</span><br><span class="line"><span class="comment"># 若求最大值，在c前加上负号</span></span><br><span class="line"><span class="comment"># 目标函数最小值</span></span><br><span class="line"><span class="built_in">print</span>(res.fun)</span><br><span class="line"><span class="comment"># 最优解</span></span><br><span class="line"><span class="built_in">print</span>(res.x)</span><br></pre></td></tr></table></figure>
 
 <p>演示：</p>
           <!--noindex-->
@@ -1317,13 +1323,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">25k</span>
+    <span title="站点总字数">28k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:32</span>
+    <span title="站点阅读时长">1:43</span>
   </span>
 </div>
 
